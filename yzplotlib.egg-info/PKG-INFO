@@ -3,3 +3,5 @@ Name: yzplotlib
 Version: 0.1
 Summary: My custom plotting tools
 Author: Yao Zhang
+Requires-Dist: matplotlib
+Requires-Dist: numpy

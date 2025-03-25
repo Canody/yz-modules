@@ -19,6 +19,11 @@ def bar_grad(
     ecolor='black',
     **kwargs
 ):
+    lw = 1
+    if ('lw' in kwargs) or ('linewidth' in kwargs):
+        curr_kw = kwargs['lw'] if 'lw' in kwargs else kwargs['linewidth']
+        lw = kwargs[curr_kw]
+
     x = np.atleast_1d(x).astype(float)
     height = np.atleast_1d(height).astype(float)
     bottom = np.atleast_1d(bottom).astype(float)
@@ -73,7 +78,7 @@ def bar_grad(
                 fmt='none',
                 capsize=capsize,
                 ecolor=ecolor,
-                elinewidth=1,
+                elinewidth=lw,
                 **kwargs
             )
 
@@ -116,7 +121,7 @@ def bar_grad(
                 fmt='none',
                 capsize=capsize,
                 ecolor=ecolor,
-                elinewidth=1,
+                elinewidth=lw,
                 **kwargs
             )
 
