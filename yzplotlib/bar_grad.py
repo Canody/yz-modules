@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
+
 def bar_grad(
     ax,
     x,
@@ -12,7 +13,6 @@ def bar_grad(
     align='center',
     orientation='vertical',
     cmap='viridis',
-    edgecolor=None,
     yerr=None,
     xerr=None,
     capsize=3,
@@ -21,11 +21,10 @@ def bar_grad(
 ):
     lw = 1
     if ('lw' in kwargs) or ('linewidth' in kwargs):
-        curr_kw = kwargs['lw'] if 'lw' in kwargs else kwargs['linewidth']
-        lw = kwargs[curr_kw]
-    if cmap is not str:
+        lw = kwargs['lw'] if 'lw' in kwargs else kwargs['linewidth']
+    if not isinstance(cmap, str):
         cmap = ListedColormap(cmap)
-
+    # cmap = ListedColormap(cmap)
     x = np.atleast_1d(x).astype(float)
     height = np.atleast_1d(height).astype(float)
     bottom = np.atleast_1d(bottom).astype(float)
@@ -131,3 +130,23 @@ def bar_grad(
         raise ValueError("orientation 只能是 'vertical' 或 'horizontal'。")
 
     return bars
+
+
+if __name__ == '__main__':
+    fig, ax = plt.subplots()
+
+    x = [0, 1, 2, 3, 4]
+    y = [3, 5, 2, 6, 4]
+    yerr = [0.5, 1, 0.3, 0.7, 0.4]
+
+    c = [0.7, 0, 0.1]
+    cmap = np.array([np.linspace(1, c[0], 256).T, np.linspace(1, c[1], 256).T, np.linspace(1, c[2], 256).T]).T
+    bar_grad(ax, x, y, width=0.8, bottom=0, cmap=cmap, yerr=yerr, capsize=5, lw=1)
+
+    ax.set_xlim(-0.5, 4.5)
+    ax.set_ylim(0, 8)
+    ax.set_xticks(x)
+    ax.set_ylabel("Value")
+    ax.set_title("Gradient Bar Chart with Error Bars")
+
+    plt.show()
