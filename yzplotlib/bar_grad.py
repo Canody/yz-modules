@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+from matplotlib.colors import ListedColormap
 
 def bar_grad(
     ax,
@@ -23,6 +23,8 @@ def bar_grad(
     if ('lw' in kwargs) or ('linewidth' in kwargs):
         curr_kw = kwargs['lw'] if 'lw' in kwargs else kwargs['linewidth']
         lw = kwargs[curr_kw]
+    if cmap is not str:
+        cmap = ListedColormap(cmap)
 
     x = np.atleast_1d(x).astype(float)
     height = np.atleast_1d(height).astype(float)
