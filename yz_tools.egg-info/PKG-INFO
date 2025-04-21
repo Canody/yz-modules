@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: yz-tools
+Version: 0.1
+Summary: Collection of custom tools by Yao Zhang
+Author: Yao Zhang
+Requires-Dist: matplotlib
+Requires-Dist: numpy
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: summary
