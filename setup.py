@@ -7,6 +7,7 @@ setup(
     install_requires=[
         'matplotlib',
         'numpy',
+        'scipy',
     ],
     description='Collection of custom tools by Yao Zhang',
     author='Yao Zhang',

@@ -5,6 +5,8 @@ Summary: Collection of custom tools by Yao Zhang
 Author: Yao Zhang
 Requires-Dist: matplotlib
 Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: cupy-cuda117
 Dynamic: author
 Dynamic: requires-dist
 Dynamic: summary

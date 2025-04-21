@@ -183,13 +183,13 @@ def forward_projection(rec, matrix, dim_pj=None):
     blocksPerGridPrj = (nPjsPoints + threadsPerBlock - 1) // threadsPerBlock
     
     # 对每个投影角度执行前向投影
-    print("开始计算前向投影...")
+    print("Start forward projection...")
     start_time = time.time()
     
     # 为每个投影单独处理，与原始CUDA代码相匹配
     for i in range(Num_pjs):
         if i % 10 == 0:
-            print(f"正在处理投影 {i+1}/{Num_pjs}")
+            print(f"Projection num: {i+1}/{Num_pjs}")
         
         # 清空当前投影的结果区域
         d_projections[i].fill(0)
@@ -212,7 +212,7 @@ def forward_projection(rec, matrix, dim_pj=None):
     )
     
     end_time = time.time()
-    print(f"前向投影计算完成，用时: {end_time - start_time:.2f}秒")
+    print(f"Time elapsed: {end_time - start_time:.2f} seconds")
     
     # 将结果从GPU转回CPU
     projections = cp.asnumpy(d_projections)
@@ -239,8 +239,8 @@ if __name__ == "__main__":
     # 计算投影
     projections = forward_projection(rec, matrix)
     
-    print(f"投影结果形状: {projections.shape}")
+    print(f"{projections.shape}")
 
-    # 保存投影结果
-    sio.savemat('../data/projections_from_python.mat', {'projections': projections})
+    # # 保存投影结果
+    # sio.savemat('../data/projections_from_python.mat', {'projections': projections})
     
