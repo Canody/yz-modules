@@ -7,7 +7,9 @@ yz_tools.egg-info/requires.txt
 yz_tools.egg-info/top_level.txt
 yzaet/__init__.py
 yzaet/eul2aetrotm.py
+yzaet/fft_imaffine.py
 yzaet/forward_projection.py
+yzaet/resire_reconstruct.py
 yzplotlib/__init__.py
 yzplotlib/bar_grad.py
 yzplotlib/grad_cmap.py
